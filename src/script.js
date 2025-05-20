@@ -9,6 +9,7 @@ import GUI from "lil-gui";
  */
 // Debug
 const gui = new GUI();
+gui.hide();
 
 // Canvas
 const canvas = document.querySelector("canvas.webgl");
@@ -356,6 +357,11 @@ scene.add(camera);
 // Controls
 const controls = new OrbitControls(camera, canvas);
 controls.enableDamping = true;
+controls.minPolarAngle = 0.361;
+controls.maxPolarAngle = 1.481;
+
+gui.add(controls, "minPolarAngle").min(0).max(Math.PI).step(0.001);
+gui.add(controls, "maxPolarAngle").min(0).max(Math.PI).step(0.001);
 
 /**
  * Renderer
